@@ -19,7 +19,7 @@ const NumberGenerator = () => {
     } while (generatedNumbers.includes(newNumber));
     
     setCurrentNumber(newNumber);
-    setGeneratedNumbers([...generatedNumbers, newNumber]);
+    setGeneratedNumbers(prev => [newNumber, ...prev]);
     announceNumber(newNumber);
   };
 
@@ -45,17 +45,28 @@ const NumberGenerator = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Random Number Generator</h1>
-      <div className="flex space-x-4 mb-4">
-        <Button onClick={generateNumber}>Generate Number</Button>
-        <Button onClick={resetSession} variant="outline">Reset Session</Button>
+      <h1 className="text-3xl font-bold mb-4 text-center">Housie Number Picker</h1>
+      <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
+        <Button onClick={generateNumber} className="w-full sm:w-auto">Generate Number</Button>
+        <Button onClick={resetSession} variant="outline" className="w-full sm:w-auto">Reset Session</Button>
       </div>
-      {currentNumber && (
-        <Card className="p-4 mb-4">
-          <p className="text-2xl font-bold">Current Number: {currentNumber}</p>
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
+        {currentNumber && (
+          <Card className="p-4 flex-grow">
+            <h2 className="text-xl font-semibold mb-2">Current Number</h2>
+            <p className="text-4xl font-bold text-center">{currentNumber}</p>
+          </Card>
+        )}
+        <Card className="p-4 flex-grow max-h-60 overflow-y-auto">
+          <h2 className="text-xl font-semibold mb-2">Recent Numbers</h2>
+          <ul className="space-y-1">
+            {generatedNumbers.map((num, index) => (
+              <li key={index} className="text-lg">{num}</li>
+            ))}
+          </ul>
         </Card>
-      )}
-      <div className="grid grid-cols-10 gap-2">
+      </div>
+      <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
         {[...Array(90)].map((_, index) => {
           const number = index + 1;
           const isGenerated = generatedNumbers.includes(number);
