@@ -59,7 +59,7 @@ const NumberGenerator = () => {
   return (
     <div className="p-4 max-w-4xl mx-auto flex flex-col min-h-screen">
       <div className="flex-grow">
-        <h1 className="text-3xl font-bold mb-4 text-center">Random Number Generator</h1>
+        <h1 className="text-3xl font-bold mb-4 text-center">Housie Number Picker</h1>
         <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
           <Button onClick={generateNumber} className="w-full sm:w-auto">Generate Number</Button>
           <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
