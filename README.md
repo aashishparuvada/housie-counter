@@ -3,7 +3,7 @@
 
 Usually we struggle to pick the coins shout out loud and reiterate if someone asks. To ease the process, I have created this app, that assists you in the game.
 
-Visit housiecounter.netlify.app to try out the app.
+Visit https://housiecounter.netlify.app to try out the app.
 
 Or clone this repo and run the Next.js app on your local.
 
